@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! 💕</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-size: 3.5rem;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #6f42c1;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cake-container {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .cake {
+            font-size: 8rem;
+            margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .candles {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .surprise-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(238, 90, 36, 0.3);
+            margin: 20px 10px;
+            font-family: inherit;
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(238, 90, 36, 0.4);
+        }
+
+        .surprise-button:active {
+            transform: translateY(-1px);
+        }
+
+        .hidden-message {
+            display: none;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #2d3436;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #fff;
+            border-radius: 50%;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .wishes-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #e84393;
+        }
+
+        .wishes-list h3 {
+            color: #e84393;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .wishes-list li {
+            margin: 10px 0;
+            color: #2d3436;
+            font-size: 1.1rem;
+        }
+
+        .music-note {
+            display: inline-block;
+            animation: dance 1s ease-in-out infinite;
+            margin: 0 5px;
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(5deg); }
+            75% { transform: translateY(-3px) rotate(-5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            .main-content {
+                padding: 20px;
+                margin: 10px;
+            }
+            .cake {
+                font-size: 6rem;
+            }
+            .message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="container">
+        <div class="main-content">
+            <h1 class="title">Happy Birthday! 🎉</h1>
+            <p class="subtitle">To My Beautiful Fiancé ✨</p>
+            
+            <div class="photo-frame">
+                💕
+            </div>
+            
+            <div class="message">
+                <p>My dearest love,</p>
+                <p>Today marks another year of your incredible journey, and I feel so blessed to be part of it. You bring sunshine to my darkest days and make every moment we share feel like magic. Your smile lights up my world, and your love makes me the luckiest person alive.</p>
+                <p>As we celebrate you today, I want you to know that you are not just my fiancé, but my best friend, my partner in adventure, and the love of my life. I can't wait to spend forever making beautiful memories with you.</p>
+            </div>
+            
+            <div class="cake-container">
+                <div class="candles">🕯🕯🕯</div>
+                <div class="cake">🎂</div>
+                <p style="color: #6f42c1; font-style: italic;">Make a wish, my love!</p>
+            </div>
+            
+            <button class="surprise-button" onclick="showSurprise()">
+                Click for a Special Message! 💝
+            </button>
+            
+            <button class="surprise-button" onclick="playBirthdaySong()">
+                Birthday Celebration! <span class="music-note">🎵</span>
+            </button>
+            
+            <div class="hidden-message" id="surpriseMessage">
+                <h3>🌟 My Promise to You 🌟</h3>
+                <p>I promise to love you more each day, to support your dreams, to laugh with you, to comfort you, and to build a beautiful future together. You are my everything, and I can't wait to call you my wife soon! 💍</p>
+                <p><strong>Here's to another year of your amazing life and to our forever love! 🥂</strong></p>
+            </div>
+            
+            <div class="wishes-list">
+                <h3>My Birthday Wishes for You 🌈</h3>
+                <ul>
+                    <li>🌸 May all your dreams come true this year</li>
+                    <li>💖 May our love grow stronger every day</li>
+                    <li>🌟 May you always shine as bright as you do</li>
+                    <li>🦋 May happiness follow you everywhere</li>
+                    <li>🎊 May this new year bring you endless joy</li>
+                    <li>💫 May we create the most beautiful memories together</li>
+                </ul>
+            </div>
+            
+            <p style="font-size: 1.3rem; color: #e84393; margin-top: 40px;">
+                <strong>I Love You More Than Words Can Say! 💕</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        // Create hearts continuously
+        setInterval(createHeart, 800);
+        
+        // Show surprise message
+        function showSurprise() {
+            const message = document.getElementById('surpriseMessage');
+            if (message.style.display === 'none' || message.style.display === '') {
+                message.style.display = 'block';
+                // Add extra hearts when surprise is revealed
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createHeart, i * 100);
+                }
+            } else {
+                message.style.display = 'none';
+            }
+        }
+        
+        // Birthday celebration function
+        function playBirthdaySong() {
+            // Create celebration effect
+            const colors = ['🎉', '🎊', '✨', '🌟', '💫', '🎈'];
+            const container = document.body;
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const celebration = document.createElement('div');
+                    celebration.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+                    celebration.style.position = 'fixed';
+                    celebration.style.left = Math.random() * window.innerWidth + 'px';
+                    celebration.style.top = Math.random() * window.innerHeight + 'px';
+                    celebration.style.fontSize = '2rem';
+                    celebration.style.zIndex = '1000';
+                    celebration.style.pointerEvents = 'none';
+                    celebration.style.animation = 'pulse 1s ease-in-out';
+                    
+                    container.appendChild(celebration);
+                    
+                    setTimeout(() => {
+                        celebration.remove();
+                    }, 1000);
+                }, i * 100);
+            }
+            
+            // Change button text temporarily
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = 'Celebrating You! 🎉';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 3000);
+        }
+        
+        // Initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9862b8a095619093',t:'MTc1OTA1NzA2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
